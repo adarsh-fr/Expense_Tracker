@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:expense_tracker/main_screen.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromARGB(90, 64, 67, 255),
+  seedColor: Color.fromARGB(255, 218, 172, 55)
 );
 
 var kDarkColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromARGB(90, 64, 67, 255),
+  seedColor: Color.fromARGB(255, 0, 14, 0),
   brightness: Brightness.dark,
 );
 void main() {
@@ -17,16 +17,16 @@ void main() {
         useMaterial3: true,
         colorScheme: kDarkColorScheme,
         cardTheme: const CardTheme().copyWith(
-          //color: kColorScheme.secondaryContainer,
+          color: kDarkColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          shadowColor: const Color.fromARGB(255, 12, 73, 227),
+          //shadowColor: const Color.fromARGB(255, 12, 73, 227),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(253, 64, 67, 255),
-            foregroundColor: Colors.white,
+            backgroundColor: kDarkColorScheme.primaryContainer,
+            foregroundColor: kDarkColorScheme.onPrimaryContainer,
           ),
         ),
       ),
@@ -38,26 +38,26 @@ void main() {
           foregroundColor: Colors.white,
         ),
         cardTheme: const CardTheme().copyWith(
-          //color: kColorScheme.secondaryContainer,
+          color: kColorScheme.secondaryContainer,
           margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          shadowColor: const Color.fromARGB(255, 12, 73, 227),
+          //shadowColor: const Color.fromARGB(255, 12, 73, 227),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(253, 64, 67, 255),
-            foregroundColor: Colors.white,
+            backgroundColor: kColorScheme.primaryContainer,
+            //foregroundColor: Colors.white,
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
-              titleLarge: const TextStyle(
+              titleLarge:  TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(90, 64, 67, 255),
-                  fontSize: 15),
+                  color: kColorScheme.onSecondaryContainer,
+                  fontSize: 28),
             ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       home: const Expenses(),
     ),
   );

@@ -22,7 +22,7 @@ class ExpenseItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(
+                  Text(  
                     '\₹${expense.amount.toStringAsFixed(2)}',
                     style: GoogleFonts.lato(
                         fontWeight: FontWeight.bold, fontSize: 17),

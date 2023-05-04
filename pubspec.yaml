@@ -38,6 +38,7 @@ dependencies:
   uuid: ^3.0.7
   intl: ^0.18.1
   google_fonts: ^4.0.4
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:

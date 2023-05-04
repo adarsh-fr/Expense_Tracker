@@ -18,7 +18,7 @@ class ExpensesList extends StatelessWidget {
               margin:
                   Theme.of(context).cardTheme.margin!.add(const EdgeInsets.all(4)),
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 253, 3, 3),
+                color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.5),
                 //shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(20),
               ),

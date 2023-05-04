@@ -3,6 +3,10 @@ import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:expense_tracker/widgets/chart/chart_bar.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:expense_tracker/main.dart';
+
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -68,6 +72,44 @@ class _ExpensesState extends State<Expenses> {
     );
   }
 
+  void _showColorPicker() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      Color pickedColor = Colors.blue; // replace with actual picked color
+      return AlertDialog(
+        title: const Text('Pick a color'),
+        content: SingleChildScrollView(
+          child: ColorPicker(
+            pickerColor: pickedColor,
+            onColorChanged: (Color color) {
+              pickedColor = color;
+            },
+            colorPickerWidth: 300.0,
+            pickerAreaHeightPercent: 0.7,
+            enableAlpha: true,
+            displayThumbColor: true,
+            // showLabel: true,
+            paletteType: PaletteType.hsv,
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              kColorScheme =
+                  ColorScheme.fromPrimary(pickedColor); // update the color scheme with the selected color
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+
   @override
   Widget build(BuildContext context) {
     Widget mainContent = const Center(
@@ -85,7 +127,6 @@ class _ExpensesState extends State<Expenses> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 64, 67, 255),
         title: Text(
           'Expense Tracker',
           style: GoogleFonts.lato(
@@ -101,13 +142,20 @@ class _ExpensesState extends State<Expenses> {
             icon: const Icon(Icons.add),
             tooltip: 'Add Expenses',
           ),
+          IconButton(
+            onPressed: () {
+              _showColorPicker();
+            },
+            icon: const Icon(Icons.color_lens),
+            tooltip: 'Pick a color',
+          ),
         ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // const Text('The Chart'),
+          Chart(expenses: _registeredExpenses),          
           Expanded(
             child: mainContent,
           ),

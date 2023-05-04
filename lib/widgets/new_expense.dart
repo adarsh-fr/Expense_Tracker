@@ -92,14 +92,13 @@ class _NewExpenseState extends State<NewExpense> {
                 style: GoogleFonts.lato(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  color: const Color.fromARGB(255, 64, 67, 255),
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   width: 1,
-                  color: Color.fromARGB(90, 64, 67, 255),
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
               ),
             ),
@@ -127,14 +126,14 @@ class _NewExpenseState extends State<NewExpense> {
                       style: GoogleFonts.lato(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: const Color.fromARGB(255, 64, 67, 255),
+                        
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(
+                      borderSide:  BorderSide(
                         width: 1,
-                        color: Color.fromARGB(90, 64, 67, 255),
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
                   ),
@@ -196,14 +195,14 @@ class _NewExpenseState extends State<NewExpense> {
                             style: GoogleFonts.lato(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
-                              color: const Color.fromARGB(255, 64, 67, 255),
+                              
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: const BorderSide(
+                            borderSide:  BorderSide(
                               width: 1,
-                              color: Color.fromARGB(90, 64, 67, 255),
+                              color: Theme.of(context).colorScheme.onPrimaryContainer,
                             ),
                           ),
                         ),
@@ -222,9 +221,7 @@ class _NewExpenseState extends State<NewExpense> {
                     ),
                     IconButton(
                       iconSize: 40,
-                      color: const Color.fromARGB(255, 64, 67, 255),
-                      splashColor: const Color.fromARGB(255, 64, 67, 255),
-                      splashRadius: 40,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
                       alignment: Alignment.topRight,
                       onPressed: () {
                         _presentDatePicker();
@@ -261,11 +258,12 @@ class _NewExpenseState extends State<NewExpense> {
                     borderRadius: BorderRadius.circular(20),
                     shape: BoxShape.rectangle,
                     border: Border.all(
-                      color: const Color.fromARGB(90, 64, 67, 255),
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
                       style: BorderStyle.solid,
                       width: 1,
                     )),
                 child: DropdownButton(
+                  dropdownColor: Theme.of(context).cardTheme.color,
                   alignment: AlignmentDirectional.center,
                   borderRadius: BorderRadius.circular(20),
                   value: _selectedCategory,
@@ -278,7 +276,6 @@ class _NewExpenseState extends State<NewExpense> {
                             style: GoogleFonts.lato(
                               fontWeight: FontWeight.bold,
                               //fontSize: 18,
-                              color: const Color.fromARGB(255, 64, 67, 255),
                             ),
                           ),
                         ),
