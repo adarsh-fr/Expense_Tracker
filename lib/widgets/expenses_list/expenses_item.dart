@@ -13,29 +13,38 @@ class ExpenseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      shadowColor: Color.fromARGB(255, 12, 73, 227),
+      
       elevation: 10,
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(expense.title,style: GoogleFonts.lato(fontWeight: FontWeight.w800, fontSize: 20),),
-              const SizedBox(
-                height: 5,
-              ),
               Row(
                 children: [
                   Text(
                     '\₹${expense.amount.toStringAsFixed(2)}',
-                    style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 17),
+                    style: GoogleFonts.lato(
+                        fontWeight: FontWeight.bold, fontSize: 17),
+                  ),
+                  const Spacer(),
+                  Text(
+                    expense.title,
+                    //style: Theme.of(context).textTheme.titleLarge,
+                    style: GoogleFonts.lato(
+                        fontWeight: FontWeight.w800, fontSize: 20),
+                    textAlign: TextAlign.center,
                   ),
                   const Spacer(),
                   Row(
                     children: [
                       Icon(categoryIcons[expense.category]),
-                      const SizedBox(width: 8,),
-                      Text(expense.formattedDate, style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 17),)
+                      //const SizedBox(width: 8,),
+                      Text(
+                        expense.formattedDate,
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.bold, fontSize: 17),
+                      )
                     ],
                   )
                 ],

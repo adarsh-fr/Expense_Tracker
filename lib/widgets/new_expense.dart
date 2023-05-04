@@ -66,6 +66,7 @@ class _NewExpenseState extends State<NewExpense> {
           title: _titleController.text,
           category: _selectedCategory),
     );
+
     Navigator.pop(context);
   }
 
@@ -79,12 +80,12 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
             controller: _titleController,
-            maxLength: 50,
+            //maxLength: 50,
             decoration: InputDecoration(
               label: Text(
                 'Title',
@@ -103,12 +104,15 @@ class _NewExpenseState extends State<NewExpense> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 15,
+          ),
           Row(
             children: [
               Expanded(
                 child: TextField(
                   controller: _amountController,
-                  maxLength: 10,
+                  //maxLength: 10,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   inputFormatters: <TextInputFormatter>[
@@ -136,30 +140,134 @@ class _NewExpenseState extends State<NewExpense> {
                   ),
                 ),
               ),
+              // Expanded(
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     crossAxisAlignment: CrossAxisAlignment.end,
+              //     children: [
+              //       Expanded(
+              //         child: TextFormField(
+              //           decoration: InputDecoration(
+              //             enabledBorder: OutlineInputBorder(
+              //               borderRadius: BorderRadius.circular(20),
+              //               borderSide: const BorderSide(
+              //                 width: 1,
+              //                 color: Color.fromARGB(90, 64, 67, 255),
+              //               ),
+              //             ),
+              //           ),
+              //           readOnly: true,
+              //           controller: TextEditingController(
+              //             text: _selectedDate == null
+              //                 ? 'No Date Selected'
+              //                 : formatter.format(_selectedDate!),
+              //           ),
+              //           style: GoogleFonts.lato(
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 18,
+              //             color: const Color.fromARGB(255, 64, 67, 255),
+              //           ),
+              //         ),
+              //       ),
+              //       IconButton(
+              //         alignment: Alignment.topRight,
+              //         onPressed: () {
+              //           _presentDatePicker();
+              //         },
+              //         icon: const Icon(Icons.calendar_today_outlined),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Spacer(),
+              const SizedBox(
+                width: 10,
+              ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      _selectedDate == null
-                          ? 'No Date Selected'
-                          : formatter.format(_selectedDate!),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          label: Text(
+                            'Date',
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: const Color.fromARGB(255, 64, 67, 255),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(
+                              width: 1,
+                              color: Color.fromARGB(90, 64, 67, 255),
+                            ),
+                          ),
+                        ),
+                        readOnly: true,
+                        controller: TextEditingController(
+                          text: _selectedDate == null
+                              ? ''
+                              : formatter.format(_selectedDate!),
+                        ),
+                        // style: GoogleFonts.lato(
+                        //   fontWeight: FontWeight.bold,
+                        //   fontSize: 18,
+                        //   color: const Color.fromARGB(255, 64, 67, 255),
+                        // ),
+                      ),
                     ),
                     IconButton(
+                      iconSize: 40,
+                      color: const Color.fromARGB(255, 64, 67, 255),
+                      splashColor: const Color.fromARGB(255, 64, 67, 255),
+                      splashRadius: 40,
+                      alignment: Alignment.topRight,
                       onPressed: () {
                         _presentDatePicker();
                       },
                       icon: const Icon(Icons.calendar_today_outlined),
                     ),
                   ],
+
+                  // children: [
+                  //   // Text(
+                  //   //   _selectedDate == null
+                  //   //       ? 'No Date Selected'
+                  //   //       : formatter.format(_selectedDate!),
+                  //   // ),
+                  //   // IconButton(
+                  //   //   onPressed: () {
+                  //   //     _presentDatePicker();
+                  //   //   },
+                  //   //   icon: const Icon(Icons.calendar_today_outlined),
+                  //   // ),
+                  // ],
                 ),
               ),
             ],
           ),
+          const SizedBox(
+            height: 15,
+          ),
           Row(
             children: [
-              DropdownButton(
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 9),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: const Color.fromARGB(90, 64, 67, 255),
+                      style: BorderStyle.solid,
+                      width: 1,
+                    )),
+                child: DropdownButton(
+                  alignment: AlignmentDirectional.center,
+                  borderRadius: BorderRadius.circular(20),
                   value: _selectedCategory,
                   items: Category.values
                       .map(
@@ -167,6 +275,11 @@ class _NewExpenseState extends State<NewExpense> {
                           value: category,
                           child: Text(
                             category.name.toUpperCase(),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              //fontSize: 18,
+                              color: const Color.fromARGB(255, 64, 67, 255),
+                            ),
                           ),
                         ),
                       )
@@ -178,20 +291,30 @@ class _NewExpenseState extends State<NewExpense> {
                     setState(() {
                       _selectedCategory = value;
                     });
-                  }),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
                   },
-                  child: const Text('Cancel')),
+                ),
+              ),
+              const Spacer(),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                    Color.fromARGB(19, 64, 67, 255),
+                  ),
+                ),
+                child: const Text('Cancel'),
+              ),
+              const SizedBox(width: 10,),
               ElevatedButton(
                 onPressed: () {
                   _submitExpenseData();
                 },
                 style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                      Color.fromARGB(255, 64, 67, 255)),
-                ),
+                    // backgroundColor: MaterialStatePropertyAll(
+                    //     Color.fromARGB(255, 64, 67, 255)),
+                    ),
                 child: const Text('Save Expense'),
               ),
             ],
