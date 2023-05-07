@@ -2,6 +2,8 @@
 # Expense Tracker App
 
 This is an expense tracker app built with Flutter. The app allows users to track their expenses by entering details such as title, amount, and date. The app also provides visual representations of the user's expenses in the form of charts.
+![ezgif-5-308a1bd2e1](https://user-images.githubusercontent.com/59118492/236668708-a3216c3e-0c39-45db-b438-6609dd410d5d.gif)
+
 
 ## Requirements
 - Flutter 2.2.0 or higher
