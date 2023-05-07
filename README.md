@@ -49,4 +49,4 @@ To run the app, clone this repository and run it using Flutter.
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Credits
-This app was created by [Your Name](https://github.com/adarsh-fr).
+This app was created by (https://github.com/adarsh-fr).
