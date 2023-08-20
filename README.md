@@ -20,7 +20,7 @@ To run the app, clone this repository and run it using Flutter.
 ## Installation
 1. Clone the repository
    ```
-   git clone https://github.com/your_username/expense_tracker_app.git
+   git clone https://github.com/adarsh-fr/expense_tracker_app.git
    ```
 2. Change directory to the cloned repository
    ```
